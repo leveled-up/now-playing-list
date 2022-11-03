@@ -1,0 +1,6 @@
+list-*.xml
+*.list
+manifest*.json
+test.txt
+*.bak
+NOTES.txt
