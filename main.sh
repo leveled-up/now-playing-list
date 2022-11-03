@@ -7,6 +7,9 @@
 
 S3_BASE_URL="https://storage.googleapis.com/music-iq-db"
 
+# Logging
+echo "[$(date)] Start"
+
 # Find manifests
 echo "Searching manifests"
 THIS_MONTH=$(date +%Y%m)
@@ -63,7 +66,7 @@ cat files.list | while read f; do
 done
 
 # Extract YT Music Ids of titles per country
-echo "Reading databases"
+echo; echo "Reading databases"
 for c_ in */; do
   c="$(basename "$c_")"
   cat $c/$c*.leveldb | grep -aoe 'watch?v=[a-z0-9A-Z\-_]\{11\}&' | grep -oe '[a-z0-9A-Z\-_]\{11\}' > $c/song-ids.list
@@ -76,4 +79,7 @@ if [ "$1" != "-k" ]; then
   echo "Deleting old files"
   rm -f */*.leveldb ../list-*.xml ../dates.list manifest.json files.list
 fi
+
+# Logging
+echo "[$(date)] End"
 
