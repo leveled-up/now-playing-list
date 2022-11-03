@@ -74,6 +74,6 @@ done
 # Delete databases
 if [ "$1" != "-k" ]; then
   echo "Deleting old files"
-  rm -f */*.leveldb list-*.xml dates.list manifest.json files.list
+  rm -f */*.leveldb ../list-*.xml ../dates.list manifest.json files.list
 fi
 
